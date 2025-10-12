@@ -1,0 +1,2 @@
+- Añadir otra función para encapsular la funcionalidad de get_next_line
+- Hacer la función get_next_line de cara al bonus
