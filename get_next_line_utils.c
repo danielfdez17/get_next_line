@@ -40,3 +40,64 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result[i] = '\0';
 	return (result);
 }
+
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	char	*dup;
+
+	i = 0;
+	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!dup)
+		return (NULL);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		++i;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*ptr;
+
+	ptr = (char *)s;
+	if (c > 255)
+		c %= 256;
+	while (*ptr)
+	{
+		if (*ptr == (char)c)
+			return (ptr);
+		ptr++;
+	}
+	if (c == '\0')
+		return (ptr);
+	return (NULL);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*ptr;
+	size_t	i;
+	size_t	size_s;
+
+	size_s = ft_strlen(s);
+	if (start >= size_s)
+		return (ft_strdup(""));
+	if (len > size_s - start)
+		len = size_s - start;
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (!ptr || !s)
+		return (NULL);
+	i = 0;
+	while (s[start] != '\0' && i < len)
+	{
+		ptr[i] = s[start];
+		++i;
+		++start;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
