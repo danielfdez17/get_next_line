@@ -6,13 +6,15 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:36 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/08 19:45:26 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/13 10:01:09 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 128
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
