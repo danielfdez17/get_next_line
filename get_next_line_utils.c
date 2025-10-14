@@ -6,39 +6,42 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:44 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/08 17:50:17 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:24:20 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strjoin(char*s1, char const *s2)
+{
+	char	*result;
+	size_t	size;
+	size_t	i;
+
+	if (!s1 && !s2)
+		return (NULL);
+	i = 0;
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	result = malloc(sizeof(char) * size);
+	if (!result)
+		return (NULL);
+	while (s1 && *s1)
+		result[i++] = *(s1++);
+	while (s2 && *s2)
+		result[i++] = *(s2++);
+	result[i] = '\0';
+	free(s1);
+	return (result);
+}
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 		++i;
 	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*result;
-	size_t	size;
-	size_t	i;
-
-	i = 0;
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	result = malloc(sizeof(char) * size);
-	if (!result)
-		return (NULL);
-	while (*s1)
-		result[i++] = *s1++;
-	while (*s2)
-		result[i++] = *s2++;
-	result[i] = '\0';
-	return (result);
 }
 
 char	*ft_strdup(const char *s)
@@ -61,35 +64,30 @@ char	*ft_strdup(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*ptr;
-
-	ptr = (char *)s;
-	if (c > 255)
-		c %= 256;
-	while (*ptr)
+	if (!s)
+		return (NULL);
+	while (*s)
 	{
-		if (*ptr == (char)c)
-			return (ptr);
-		ptr++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	if (c == '\0')
-		return (ptr);
 	return (NULL);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*ptr;
 	size_t	i;
 	size_t	size_s;
 
 	size_s = ft_strlen(s);
-	if (start >= size_s)
-		return (ft_strdup(""));
+	if (!s || start > size_s)
+		return (NULL);
 	if (len > size_s - start)
 		len = size_s - start;
 	ptr = malloc(sizeof(char) * (len + 1));
-	if (!ptr || !s)
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	while (s[start] != '\0' && i < len)
