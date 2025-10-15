@@ -6,29 +6,34 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:44 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/14 12:24:20 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:11:45 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char*s1, char const *s2)
+char	*ft_strjoin(char*s1, char *s2)
 {
 	char	*result;
 	size_t	size;
 	size_t	i;
+	size_t	j;
 
 	if (!s1 && !s2)
 		return (NULL);
 	i = 0;
+	j = 0;
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	result = malloc(sizeof(char) * size);
 	if (!result)
 		return (NULL);
-	while (s1 && *s1)
-		result[i++] = *(s1++);
-	while (s2 && *s2)
-		result[i++] = *(s2++);
+	while (s1 && s1[i])
+	{
+		result[i] = s1[i];
+		++i;
+	}
+	while (s2 && s2[j])
+		result[i++] = s2[j++];
 	result[i] = '\0';
 	free(s1);
 	return (result);
