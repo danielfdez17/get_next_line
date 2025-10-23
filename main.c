@@ -16,6 +16,7 @@ void	print_line(char *line)
 void	checker(char *line, char *expected)
 {
 	// assert(strcmp(line, expected) == 0);
+	(void)expected;
 	print_line(line);
 	free(line);
 }
