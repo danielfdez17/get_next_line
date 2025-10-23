@@ -6,7 +6,7 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:36 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/15 16:07:13 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:34:23 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-
-void	print_line(char *line);
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
