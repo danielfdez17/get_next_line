@@ -6,7 +6,7 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:42 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/15 16:11:19 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/24 08:25:01 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,18 @@ static char	*ft_till_endl(char *s)
 
 static char	*ft_read_file(int fd, char *static_buff)
 {
-	char	*buffer;
-	ssize_t	bytes;
+	char				*buffer;
+	ssize_t				bytes;
+	unsigned long long	buffer_size;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (buffer);
+	buffer_size = BUFFER_SIZE;
 	bytes = 1;
 	while (!ft_strchr(static_buff, '\n') && bytes > 0)
 	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
+		buffer = malloc(sizeof(char) * (buffer_size + 1));
+		if (!buffer)
+			return (buffer);
+		bytes = read(fd, buffer, buffer_size);
 		if (bytes == -1)
 		{
 			free(buffer);
@@ -74,8 +76,8 @@ static char	*ft_read_file(int fd, char *static_buff)
 		}
 		buffer[bytes] = '\0';
 		static_buff = ft_strjoin(static_buff, buffer);
+		buffer_size *= 2;
 	}
-	free(buffer);
 	return (static_buff);
 }
 

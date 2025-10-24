@@ -6,7 +6,7 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:36 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/23 15:35:11 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/24 08:10:03 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # endif
 
 # ifndef MAX_FD
-#  define MAX_FD 256
+#  define MAX_FD 1024
 # endif
 
 # include <unistd.h>

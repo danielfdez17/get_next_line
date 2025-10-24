@@ -6,13 +6,13 @@
 /*   By: danfern3 <danfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:54:44 by danfern3          #+#    #+#             */
-/*   Updated: 2025/10/15 16:11:45 by danfern3         ###   ########.fr       */
+/*   Updated: 2025/10/24 08:24:13 by danfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_strjoin(char*s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
 	size_t	size;
@@ -36,6 +36,7 @@ char	*ft_strjoin(char*s1, char *s2)
 		result[i++] = s2[j++];
 	result[i] = '\0';
 	free(s1);
+	free(s2);
 	return (result);
 }
 

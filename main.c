@@ -39,4 +39,4 @@ int main(int ac, char **av)
 	std_in();
 	return (0);
 }
-// ccw *.c -D BUFFER_SIZE=42 -o a.out && ./a.out < ./files/1char.txt
+// clear && ccw main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=42 -o a.out && ./a.out < ./files/1char.txt
